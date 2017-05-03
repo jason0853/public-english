@@ -8,7 +8,7 @@ module.exports = {
     devtool: 'eval-source-map',
     entry: [
         'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:8080',
+        'webpack-dev-server/client?http://localhost:8000',
         'webpack/hot/only-dev-server',
         './src/js/index.js',
     ],
@@ -38,9 +38,25 @@ module.exports = {
                 use: [{
                 loader: "style-loader"
                 }, {
-                    loader: "css-loader"
+                    loader: 'css-loader', options: {
+                        importLoaders: 1,
+                        sourceMap: true
+                    }
                 }, {
-                    loader: "sass-loader"
+                    loader: 'postcss-loader',
+                    options: {
+                        plugins: function() {
+                            return [
+                                require('autoprefixer')({
+                                    browsers: ['last 2 versions', 'ie 9', 'Firefox ESR']
+                                })
+                            ];
+                        }
+                    }
+                }, {
+                    loader: 'sass-loader', options: {
+                        sourceMap: true
+                    }
                 }]
             }
         ]
@@ -55,6 +71,7 @@ module.exports = {
     ],
     devServer: {
         hot: true,
+        port: 8000,
         publicPath: '/'
     }
 }

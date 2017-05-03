@@ -24,10 +24,24 @@ module.exports = {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [{
-                        loader: "css-loader",
-                        options: { minimize: true }
+                        loader: 'css-loader',
+                        options: { 
+                            importLoaders: 1,
+                            minimize: true 
+                        }
+                    },{
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function() {
+                                return [
+                                    require('autoprefixer')({
+                                        browsers: ['last 2 versions', 'ie 9', 'Firefox ESR']
+                                    })
+                                ];
+                            }
+                        }
                     }, {
-                        loader: "sass-loader"
+                        loader: 'sass-loader'
                     }]
                 })
             }
@@ -40,6 +54,7 @@ module.exports = {
                 warnings: false,
             },
         }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             minify: {
@@ -49,7 +64,7 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin({
-            filename: 'style.css'
+            filename: 'style.min.css'
         })
     ]
 
