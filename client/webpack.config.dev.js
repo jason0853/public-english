@@ -5,14 +5,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 module.exports = {
+    context: resolve(__dirname, 'src'),
     devtool: 'eval-source-map',
     entry: [
         'react-hot-loader/patch',
         'webpack-dev-server/client?http://localhost:8000',
         'webpack/hot/only-dev-server',
-        './src/js/index.js',
+        './js/index.js',
     ],
     output: {
+        path: resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: '/'
     },
@@ -58,6 +60,18 @@ module.exports = {
                         sourceMap: true
                     }
                 }]
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'img/'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -65,13 +79,15 @@ module.exports = {
         new DashboardPlugin(),
         new WebpackBrowserPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ],
     devServer: {
         hot: true,
         port: 8000,
-        publicPath: '/'
+        publicPath: '/',
+        contentBase: resolve(__dirname, 'dist'),
     }
 }
