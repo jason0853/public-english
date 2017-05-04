@@ -6,7 +6,9 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.68.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
