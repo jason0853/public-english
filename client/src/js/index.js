@@ -2,10 +2,11 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import App from './components/App';
+import Routes from './Routes/Routes';
 import '../scss/index.scss';
 
 render(
-    <App />,
+    <Routes />,
     document.getElementById('app')
 );
 
