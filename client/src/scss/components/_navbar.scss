@@ -1,0 +1,66 @@
+.navbar {
+    text-align: center;
+    // background: $navbar-bg;
+    background-color: lighten($navbar-bg, 7%);
+    ul {
+        li {
+            a {
+                display: block;
+                padding: 1.5rem 1.2rem;
+            }
+        }
+        &.brand {
+            li {
+                a {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    color: darken($navbar-bg, 25%);
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+        }
+        &.menu {
+            li {
+                a {
+                    color: $white;
+                    font-family: $alegreya-sans;
+                    font-size: 1rem;
+                }
+                &:hover {
+                    background-color: $white;
+                    a {
+                        color: $navbar-bg;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        ul {
+            display: flex;
+            &.menu {
+                li {
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            flex: 1 1 230px;
+        }
+    }
+}

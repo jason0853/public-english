@@ -2,8 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import App from './components/App';
-import Routes from './Routes/Routes';
+import Routes from './routes/Routes';
 import '../scss/index.scss';
+import 'semantic-ui-css/components/icon.css';
 
 render(
     <Routes />,
