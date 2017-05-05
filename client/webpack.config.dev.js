@@ -36,6 +36,28 @@ module.exports = {
                 }
             },
             {
+                test: /\.css$/,
+                use: [{
+                loader: "style-loader"
+                }, {
+                    loader: 'css-loader', options: {
+                        importLoaders: 1,
+                        sourceMap: true
+                    }
+                }, {
+                    loader: 'postcss-loader',
+                    options: {
+                        plugins: function() {
+                            return [
+                                require('autoprefixer')({
+                                    browsers: ['last 2 versions', 'ie 9', 'Firefox ESR']
+                                })
+                            ];
+                        }
+                    }
+                }]
+            },
+            {
                 test: /\.scss$/,
                 use: [{
                 loader: "style-loader"
@@ -62,7 +84,7 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(jpg|png)$/,
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
                 use: [
                     {
                         loader: 'file-loader',

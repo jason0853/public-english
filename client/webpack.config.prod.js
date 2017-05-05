@@ -21,6 +21,29 @@ module.exports = {
                 }
             },
             {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    use: [{
+                        loader: 'css-loader',
+                        options: { 
+                            importLoaders: 1,
+                            minimize: true 
+                        }
+                    },{
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function() {
+                                return [
+                                    require('autoprefixer')({
+                                        browsers: ['last 2 versions', 'ie 9', 'Firefox ESR']
+                                    })
+                                ];
+                            }
+                        }
+                    }]
+                })
+            },
+            {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [{
@@ -46,7 +69,7 @@ module.exports = {
                 })
             },
             {
-                test: /\.(jpg|png)$/,
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
                 use: [
                     {
                         loader: 'file-loader',
