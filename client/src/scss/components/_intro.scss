@@ -5,16 +5,68 @@
         size: cover;
         position: center center;
     }
-    h1 {
-        padding: 1.2rem;
-        @include font-style($yellowtail, 2rem, bold);
-        a {
-            color: lighten($pink, 20%);
-            text-shadow: 2px 2px $pink;
-            &:hover {
-                color: $white;
-                transition: .3s;
+    .top {
+        h1 {
+            padding: 1rem;
+            @include font-style($yellowtail, 2rem, bold);
+            a {
+                color: lighten($pink, 20%);
+                text-shadow: 2px 2px $pink;
+                transition: .5s;
+                &:hover {
+                    color: $white;
+                    transition: .5s;
+                }
             }
+        }
+        .intro-btns {
+            padding: 1rem;
+        }
+    }
+    .greet {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        height: calc(100% - 73px);
+        .header {
+            .content {
+                margin: 1.5rem 0;
+                @include font-style($yellowtail, 5rem, bold);
+                color: lighten($red, 10%);
+                text-shadow: 2px 2px lighten($red, 20%);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .intro {
+        .top {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .intro {
+        .top {
+            text-align: center;
+            .intro-btns {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                flex-flow: column;
+                .button {
+                    margin: .2rem 0;
+                }
+            }
+        }
+        .greet {
+            height: calc(100% - 64px);
         }
     }
 }

@@ -4,23 +4,19 @@ import { Button, Icon } from 'semantic-ui-react';
 
 const Buttons = () => {
     return (
-        <div className="auth-buttons">
-            <Link to="/login">
-                <Button primary>
-                    <Icon 
-                        disabled={false} 
-                        name="sign in"
-                    />Login
-                </Button>
-            </Link>
-            <Link to="/signup">
-                <Button primary>
-                    <Icon 
-                        disabled={false} 
-                        name="signup" 
-                    />Sign up
-                </Button>
-            </Link>
+        <div className="intro-btns">
+            <Button animated color="pink">
+                <Button.Content visible><Icon name="sign in" /> Login</Button.Content>
+                <Button.Content hidden>
+                    Please, Login!
+                </Button.Content>
+            </Button>
+            <Button animated color="pink">
+                <Button.Content visible><Icon name="signup" /> Sign up</Button.Content>
+                <Button.Content hidden>
+                    Please, Sign up!
+                </Button.Content>
+            </Button>
         </div>
     );
 };
