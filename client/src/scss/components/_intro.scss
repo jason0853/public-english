@@ -1,10 +1,6 @@
 .intro {
     @extend .full-height;
-    background: {
-        repeat: no-repeat;
-        size: cover;
-        position: center center;
-    }
+    @extend .bg-option;
     .top {
         .intro-btns {
             padding: 1rem;

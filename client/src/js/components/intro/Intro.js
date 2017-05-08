@@ -4,11 +4,11 @@ import Logo from '../common/Logo';
 import Buttons from './Buttons';
 import Greet from './Greet';
 
-import introImage from '../../../img/intro_bg.jpg';
+import introBg from '../../../img/intro_bg.jpg';
 
 const Intro = () => {
     return (
-        <div className="intro" style={{ backgroundImage: `url(${introImage})` }}>
+        <div className="intro" style={{ backgroundImage: `url(${introBg})` }}>
             <div className="top">
                 <Logo />
                 <Buttons />

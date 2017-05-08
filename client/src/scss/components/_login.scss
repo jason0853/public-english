@@ -1,34 +1,5 @@
-// .login {
-//     display: flex; 
-//     flex-flow: row;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100%;
-//     .login-box {
-//         flex-basis: 20rem;
-//         height: 20rem;
-//         border-radius: .6rem;
-//         background: $white;
-//         h2 {
-//             padding: .8rem;
-//             text-align: center;
-//             font: {
-//                 size: 1rem;
-//                 weight: bold;
-//                 family: $alegreya-sans;
-//             }
-//         }
-//         .login-form {
-//             border-top: 1px solid #ddd;
-//         }
-//     }
-// }
-
-// @media screen and (min-width: 768px) {
-//     .login {
-//         .login-form {
-//             flex-basis: 25rem;
-//             height: 25rem;
-//         }
-//     }
-// }
+.login {
+    @extend .full-height;
+    @extend .bg-option;
+    
+}
