@@ -31,7 +31,7 @@
         height: calc(100% - 73px);
         .header {
             .content {
-                margin: 1.5rem 0;
+                margin: 2rem 0;
                 @include font-style($yellowtail, 5rem, bold);
                 color: lighten($red, 10%);
                 text-shadow: 2px 2px lighten($red, 20%);

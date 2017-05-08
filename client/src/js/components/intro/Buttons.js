@@ -6,15 +6,19 @@ const Buttons = () => {
     return (
         <div className="intro-btns">
             <Button animated color="pink">
-                <Button.Content visible><Icon name="sign in" /> Login</Button.Content>
+                <Button.Content visible>
+                    <Icon name="sign in" />Login
+                </Button.Content>
                 <Button.Content hidden>
-                    Please, Login!
+                    <Link to="/login">Please, Login!</Link>
                 </Button.Content>
             </Button>
             <Button animated color="pink">
-                <Button.Content visible><Icon name="signup" /> Sign up</Button.Content>
+                <Button.Content visible>
+                    <Icon name="signup" />Sign up
+                </Button.Content>
                 <Button.Content hidden>
-                    Please, Sign up!
+                    <Link to="/signup">Please, Sign up!</Link>
                 </Button.Content>
             </Button>
         </div>

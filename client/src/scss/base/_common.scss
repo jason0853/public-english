@@ -20,6 +20,7 @@ html, body {
         @extend .full-height;
         > div { @extend .full-height; }
         a {
+            color: $white;
             text-decoration: none;
         }
     }
