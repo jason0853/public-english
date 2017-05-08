@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Logo from '../common/Logo';
+import LoginForm from './LoginForm';
 
-import loginBg from '../../../img/login_bg.jpg';
+import loginBg from '../../../img/second_bg.jpg';
 
 const Login = () => {
     return (
@@ -10,6 +11,7 @@ const Login = () => {
             <div className="top">
                 <Logo />
             </div>
+            <LoginForm />
         </div>
     );
 };
