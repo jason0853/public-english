@@ -1,8 +1,20 @@
 .intro {
-    height: inherit;
+    @extend .full-height;
     background: {
         repeat: no-repeat;
         size: cover;
         position: center center;
+    }
+    h1 {
+        padding: 1.2rem;
+        @include font-style($yellowtail, 2rem, bold);
+        a {
+            color: lighten($pink, 20%);
+            text-shadow: 2px 2px $pink;
+            &:hover {
+                color: $white;
+                transition: .3s;
+            }
+        }
     }
 }

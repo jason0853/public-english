@@ -2,6 +2,14 @@
     height: 100%;
 }
 
+@mixin font-style($family, $size, $weight) {
+    font: {
+        family: $family;
+        size: $size;
+        weight: $weight;
+    }
+}
+
 html, body {
     @extend .full-height
 }
