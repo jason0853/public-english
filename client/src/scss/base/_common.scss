@@ -19,8 +19,8 @@ html, body {
     .container {
         @extend .full-height;
         > div { @extend .full-height; }
+        button a { color: $white; }
         a {
-            color: $white;
             text-decoration: none;
         }
     }

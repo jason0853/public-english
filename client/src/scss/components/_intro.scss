@@ -6,19 +6,6 @@
         position: center center;
     }
     .top {
-        h1 {
-            padding: 1rem;
-            @include font-style($yellowtail, 2rem, bold);
-            a {
-                color: lighten($pink, 20%);
-                text-shadow: 2px 2px $pink;
-                transition: .5s;
-                &:hover {
-                    color: $white;
-                    transition: .5s;
-                }
-            }
-        }
         .intro-btns {
             padding: 1rem;
         }

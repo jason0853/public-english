@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+import Logo from '../common/Logo';
 import Buttons from './Buttons';
 import Greet from './Greet';
 
@@ -10,11 +10,7 @@ const Intro = () => {
     return (
         <div className="intro" style={{ backgroundImage: `url(${introImage})` }}>
             <div className="top">
-                <h1>
-                    <Link to="/">
-                        Public English
-                    </Link>
-                </h1>
+                <Logo />
                 <Buttons />
             </div>
             <Greet />
