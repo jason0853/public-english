@@ -1,0 +1,27 @@
+.intro {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    // align-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    h1 {
+        padding: 1.5rem;
+        font: {
+            family: $yellowtail;
+            size: 3rem;
+            weight: bold;
+        }
+        color: lighten(#039BE5, 10%);
+        text-shadow: 2px 2px #0277BD;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .intro {
+        // h1, .auth-button {
+        //     flex-basis: 24rem;
+        // }
+    }
+}

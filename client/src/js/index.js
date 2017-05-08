@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from './components/App';
+import App from './containers/App';
 import Routes from './routes/Routes';
 import '../scss/index.scss';
 import 'semantic-ui-css/components/icon.css';
