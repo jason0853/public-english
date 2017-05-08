@@ -110,6 +110,7 @@ module.exports = {
         hot: true,
         port: 8000,
         publicPath: '/',
+        historyApiFallback: true,
         contentBase: resolve(__dirname, 'dist'),
     }
 }
