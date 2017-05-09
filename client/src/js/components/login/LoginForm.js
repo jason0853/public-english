@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoginForm = () => {
     return (
-        <form className="form">
+        <form>
             <input type="text"/>
             <input type="password"/>
         </form>

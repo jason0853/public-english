@@ -1,0 +1,51 @@
+.login, .signup {
+    @extend .full-height;
+    @extend .bg-option;
+    form {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100% - 64px);
+        h2 {
+            padding: 1rem 0;
+            @include font-style($yellowtail, 2rem, bold);
+            color: darken($light-blue, 10%);
+            text-shadow: 2px 2px lighten($light-blue, 30%);
+            text-align: center;
+            border-bottom: 1px solid $gray;
+        }
+        .box {
+            background: $white;
+            border-radius: .3rem;
+            padding: 1.5rem;
+            box-sizing: border-box;
+            box-shadow: 1px 1px 1px $white;
+            .form-group {
+                label {
+                    display: block;
+                    @include font-style($alegreya-sans, 1rem, bold);
+                    padding: .7rem 0;
+                }
+                input {
+                    width: 15rem;
+                    @extend .input-style;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .login, .signup {
+        form {
+            .box {
+                .form-group {
+                    input {
+                        width: 32rem;
+                    }
+                }
+            }
+        }
+    }
+}

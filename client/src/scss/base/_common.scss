@@ -1,3 +1,11 @@
+@mixin font-style($family, $size, $weight) {
+    font: {
+        family: $family;
+        size: $size;
+        weight: $weight;
+    }
+}
+
 .full-height {
     height: 100%;
 }
@@ -10,12 +18,11 @@
     }
 }
 
-@mixin font-style($family, $size, $weight) {
-    font: {
-        family: $family;
-        size: $size;
-        weight: $weight;
-    }
+.input-style {
+    border: 1px solid $gray;
+    border-radius: .3rem;
+    padding: .6rem .5rem;
+    @include font-style($alegreya-sans, 1rem, normal);
 }
 
 html, body {
