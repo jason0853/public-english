@@ -113,5 +113,8 @@ module.exports = {
         publicPath: '/',
         historyApiFallback: true,
         contentBase: resolve(__dirname, 'dist'),
+        proxy: {
+            '/api': 'http://localhost:3000'
+        }
     }
 }
