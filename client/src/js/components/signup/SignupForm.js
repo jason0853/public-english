@@ -1,53 +1,99 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Divider, Select } from 'semantic-ui-react';
+import { Button, Divider, Dropdown } from 'semantic-ui-react';
 
-const SignupForm = () => {
-    return (
-        <form>
-            <h2>Sign Up</h2>
-            <div className="box">
-                <div className="form-group">
-                    <label>Username</label>
-                    <input 
-                        type="text" 
-                        placeholder="Username"
-                        name="username"
-                    />
+const languageOptions = ['korea', 'English'];
+
+class SignupForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            email: '',
+            password: '',
+            passwordConfirm: '',
+            language: ''
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log(this.state);
+    }
+
+    render() {
+        const options = languageOptions.map((value, i) => {
+            return <option key={i}>{value}</option>
+        })
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <h2>Sign Up</h2>
+                <div className="box">
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input 
+                            type="text" 
+                            placeholder="Username"
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input 
+                            type="text" 
+                            placeholder="Email"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input 
+                            type="password" 
+                            placeholder="Password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password Confirmation</label>
+                        <input 
+                            type="password"
+                            placeholder="Password Confirmation"
+                            name="passwordConfirm"
+                            value={this.state.passwordConfirm}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Language</label>
+                        <select 
+                            name="language"
+                            value={this.state.language}
+                            onChange={this.handleChange}>
+                            <option value="" disabled>Select your language</option>
+                            {options}
+                        </select>
+                    </div>
+                    <Divider />
+                    <Button primary fluid>Sign Up</Button>
                 </div>
-                <div className="form-group">
-                    <label>Email</label>
-                    <input 
-                        type="text" 
-                        placeholder="Email"
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Password</label>
-                    <input 
-                        type="password" 
-                        placeholder="Password"
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Password Confirmation</label>
-                    <input 
-                        type="password"
-                        placeholder="Password Confirmation" 
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Language</label>
-                    {/*<Select 
-                        placeholder='Select your language' 
-                        options={languageOptions}
-                    />*/}
-                </div>
-                <Divider />
-                <Button primary fluid>Sign Up</Button>
-            </div>
-        </form>
-    );
-};
+            </form>
+        )
+    }
+}
 
 export default SignupForm;

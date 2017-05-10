@@ -5,14 +5,13 @@ import SignupForm from './SignupForm';
 
 import signupBg from '../../../img/second_bg.jpg';
 
-const Signup = ({auth}) => {
-    console.log(auth)
+const Signup = ({username}) => {
     return (
         <div className="signup" style={{ backgroundImage: `url(${signupBg})` }}>
             <div className="top">
                 <Logo />
             </div>
-            <SignupForm />
+            <SignupForm username={username}/>
         </div>
     );
 };

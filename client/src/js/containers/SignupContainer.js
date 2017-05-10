@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 const mapStateToProps = (state) => ({
-    auth: 'test'
+    username: state.auth.username
 })
 
 const SignupContainer = connect(mapStateToProps)(Signup);
