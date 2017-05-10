@@ -31,7 +31,8 @@ module.exports = {
                                 'modules': false
                             }
                         }],
-                        'react'
+                        'react',
+                        'stage-2'
                     ]
                 }
             },

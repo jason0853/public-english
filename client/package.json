@@ -4,10 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "next",
+    "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.2"
   },
@@ -17,6 +20,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",

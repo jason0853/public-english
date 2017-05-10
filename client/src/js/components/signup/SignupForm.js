@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Divider, Select } from 'semantic-ui-react';
 
 const SignupForm = () => {
@@ -11,6 +12,7 @@ const SignupForm = () => {
                     <input 
                         type="text" 
                         placeholder="Username"
+                        name="username"
                     />
                 </div>
                 <div className="form-group">
