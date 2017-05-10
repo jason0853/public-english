@@ -1,11 +1,8 @@
 import Signup from '../components/signup/Signup';
 import { connect } from 'react-redux';
 
+import { createUser } from '../actions/user';
 
-const mapStateToProps = (state) => ({
-    username: state.auth.username
-})
-
-const SignupContainer = connect(mapStateToProps)(Signup);
+const SignupContainer = connect(null, { createUser })(Signup);
 
 export default SignupContainer;

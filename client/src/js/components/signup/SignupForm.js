@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-
 import { Button, Divider, Dropdown } from 'semantic-ui-react';
 
 const languageOptions = ['korea', 'English'];
@@ -29,7 +27,9 @@ class SignupForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        axios.post('/api/users', { user: this.state });
+        this.props.createUser(this.state)
+        .then((res) => { console.log(res) })
+        .then((err) => { console.log('error' + err) })
     }
 
     render() {
