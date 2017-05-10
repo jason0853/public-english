@@ -1,47 +1,29 @@
-// import React from 'react';
-// import { render } from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import { Provider } from 'react-redux';
 
-// import App from './containers/App';
-// import '../scss/index.scss';
-// import 'semantic-ui-css/components/icon.css';
+import App from './containers/App';
+import store from './store';
+import '../scss/index.scss';
+import 'semantic-ui-css/components/icon.css';
 
-// render(
-//     <App />,
-//     document.getElementById('app')
-// );
-
-import { createStore } from 'redux';
-
-const initialState = {
-    username: 'Jason',
-    age: 32,
-    favorite: ['music', 'english', 'basketball']
+const render = (Component) => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('app')
+  );
 };
 
-const reducer = (state = initialState, action) => {
-    switch(action.type) {
-        case 'TEST':
-            return {
-                ...state,
-                favorite: [...state.favorite.slice(0, 2)]
-            }
-        default: 
-            return state; 
-    }
-};
-
-const store = createStore(reducer);
-
-store.subscribe(() => {
-    console.log(store.getState())
-})
-
-store.dispatch({
-    type: 'TEST'
-});
+render(App);
 
 // Hot Module Replacement API
 if (module.hot) {
-    module.hot.accept();
+    // module.hot.accept();
+    module.hot.accept('./containers/App', () => {
+        render(App);
+    });
 }
 
