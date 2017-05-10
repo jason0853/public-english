@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import promise from 'redux-promise-middleware';
 
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
     const store = createStore(
         rootReducer, 
-        composeWithDevTools()
+        composeWithDevTools(
+            applyMiddleware(promise())
+        )
     );
 
     if (module.hot) {
