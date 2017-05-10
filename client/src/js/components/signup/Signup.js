@@ -5,7 +5,8 @@ import SignupForm from './SignupForm';
 
 import signupBg from '../../../img/second_bg.jpg';
 
-const Signup = () => {
+const Signup = ({auth}) => {
+    console.log(auth)
     return (
         <div className="signup" style={{ backgroundImage: `url(${signupBg})` }}>
             <div className="top">

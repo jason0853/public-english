@@ -1,29 +1,35 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
 import App from './containers/App';
-import store from './store';
+import configureStore from './store/configureStore';
 import '../scss/index.scss';
 import 'semantic-ui-css/components/icon.css';
 
-const render = (Component) => {
-  ReactDOM.render(
+const store = configureStore();
+
+render(
     <AppContainer>
-      <Component />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </AppContainer>,
     document.getElementById('app')
-  );
-};
+);
 
-render(App);
-
-// Hot Module Replacement API
 if (module.hot) {
-    // module.hot.accept();
     module.hot.accept('./containers/App', () => {
-        render(App);
+        const NextApp = require('./containers/App').default;
+        render(
+            <AppContainer>
+                <Provider store={store}>
+                    <NextApp />
+                </Provider>
+            </AppContainer>,
+            document.getElementById('app')
+        );
     });
 }
 
