@@ -12,7 +12,8 @@ class SignupForm extends Component {
             email: '',
             password: '',
             passwordConfirm: '',
-            language: ''
+            language: '',
+            errors: {},
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,9 +28,12 @@ class SignupForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({ errors: {} });
         this.props.createUser(this.state)
-        .then((res) => { console.log(res) })
-        .then((err) => { console.log('error' + err) })
+        .then(res => { 
+            console.log('test');
+        })
+        .catch((err) => this.setState({ errors: err.response.data }))
     }
 
     render() {
