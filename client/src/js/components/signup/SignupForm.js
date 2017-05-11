@@ -15,6 +15,7 @@ class SignupForm extends Component {
             passwordConfirm: '',
             language: '',
             errors: {},
+            isLoading: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -29,16 +30,16 @@ class SignupForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({ errors: {} });
+        this.setState({ errors: {}, isLoading: true });
         this.props.createUser(this.state)
         .then(res => { 
             console.log(res);
         })
-        .catch((err) => this.setState({ errors: err.response.data }))
+        .catch((err) => this.setState({ errors: err.response.data, isLoading: false }))
     }
 
     render() {
-        const { errors } = this.state;
+        const { errors, isLoading } = this.state;
 
         const options = languageOptions.map((value, i) => {
             return <option key={i}>{value}</option>
@@ -104,7 +105,7 @@ class SignupForm extends Component {
                         {errors.language && <Message size="mini" color="red">{errors.language}</Message>}
                     </div>
                     <Divider />
-                    <Button primary fluid>Sign Up</Button>
+                    <Button loading={isLoading} primary fluid>Sign Up</Button>
                 </div>
             </form>
         )
