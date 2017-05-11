@@ -8,6 +8,7 @@ exports.register = (req, res) => {
             res.status(400).json(errors);
         } else {
             res.status(200).json({success: true});
+            console.log(req.body)
         }
     }, 1000);
 }

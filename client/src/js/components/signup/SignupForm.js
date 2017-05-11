@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Button, Divider, Message } from 'semantic-ui-react';
+import validateInput from '../../helpers/validateInput';
 
 const languageOptions = ['korea', 'English'];
 
@@ -22,6 +23,16 @@ class SignupForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    isValid() {
+        const { errors, isValid } = validateInput(this.state);
+
+        if (!isValid) {
+            this.setState({ errors });
+        }
+
+        return isValid;
+    }
+
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -30,12 +41,15 @@ class SignupForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({ errors: {}, isLoading: true });
-        this.props.createUser(this.state)
-        .then(res => { 
-            console.log(res);
-        })
-        .catch((err) => this.setState({ errors: err.response.data, isLoading: false }))
+        
+        if (this.isValid()) {
+            this.setState({ errors: {}, isLoading: true });
+            this.props.createUser(this.state)
+            .then(res => { 
+                console.log(res);
+            })
+            .catch((err) => this.setState({ errors: err.response.data, isLoading: false }));
+        }
     }
 
     render() {
