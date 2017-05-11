@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Divider, Dropdown } from 'semantic-ui-react';
+import classnames from 'classnames';
+import { Button, Divider, Message } from 'semantic-ui-react';
 
 const languageOptions = ['korea', 'English'];
 
@@ -31,20 +32,23 @@ class SignupForm extends Component {
         this.setState({ errors: {} });
         this.props.createUser(this.state)
         .then(res => { 
-            console.log('test');
+            console.log(res);
         })
         .catch((err) => this.setState({ errors: err.response.data }))
     }
 
     render() {
+        const { errors } = this.state;
+
         const options = languageOptions.map((value, i) => {
             return <option key={i}>{value}</option>
-        })
+        });
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <h2>Sign Up</h2>
                 <div className="box">
-                    <div className="form-group">
+                    <div className={classnames('form-group', { error: errors.username  })}>
                         <label>Username</label>
                         <input 
                             type="text" 
@@ -53,8 +57,9 @@ class SignupForm extends Component {
                             value={this.state.username}
                             onChange={this.handleChange}
                         />
+                        {errors.username && <Message size="mini" color="red">{errors.username}</Message>}
                     </div>
-                    <div className="form-group">
+                    <div className={classnames('form-group', { error: errors.email  })}>
                         <label>Email</label>
                         <input 
                             type="text" 
@@ -63,8 +68,9 @@ class SignupForm extends Component {
                             value={this.state.email}
                             onChange={this.handleChange}
                         />
+                        {errors.email && <Message size="mini" color="red">{errors.email}</Message>}
                     </div>
-                    <div className="form-group">
+                    <div className={classnames('form-group', { error: errors.password  })}>
                         <label>Password</label>
                         <input 
                             type="password" 
@@ -73,8 +79,9 @@ class SignupForm extends Component {
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
+                        {errors.password && <Message size="mini" color="red">{errors.password}</Message>}
                     </div>
-                    <div className="form-group">
+                    <div className={classnames('form-group', { error: errors.passwordConfirm  })}>
                         <label>Password Confirmation</label>
                         <input 
                             type="password"
@@ -83,8 +90,9 @@ class SignupForm extends Component {
                             value={this.state.passwordConfirm}
                             onChange={this.handleChange}
                         />
+                        {errors.passwordConfirm && <Message size="mini" color="red">{errors.passwordConfirm}</Message>}
                     </div>
-                    <div className="form-group">
+                    <div className={classnames('form-group', { error: errors.language  })}>
                         <label>Language</label>
                         <select 
                             name="language"
@@ -93,6 +101,7 @@ class SignupForm extends Component {
                             <option value="" disabled>Select your language</option>
                             {options}
                         </select>
+                        {errors.language && <Message size="mini" color="red">{errors.language}</Message>}
                     </div>
                     <Divider />
                     <Button primary fluid>Sign Up</Button>

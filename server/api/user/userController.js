@@ -41,6 +41,8 @@ exports.register = (req, res) => {
 
     if (!isValid) {
         res.status(400).json(errors);
+    } else {
+        res.status(200).json({success: true});
     }
     
 }

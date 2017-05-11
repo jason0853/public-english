@@ -31,6 +31,11 @@
                     width: 15rem;
                     @extend .input-style;
                 }
+                &.error {
+                    input, select { 
+                        border-color: darken($red, 10%);
+                    }
+                }
             }
         }
     }
