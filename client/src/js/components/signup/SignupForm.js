@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Button, Divider, Message } from 'semantic-ui-react';
 import validateInput from '../../helpers/validateInput';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 const languageOptions = ['korea', 'English'];
 
@@ -63,50 +64,40 @@ class SignupForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <h2>Sign Up</h2>
                 <div className="box">
-                    <div className={classnames('form-group', { error: errors.username  })}>
-                        <label>Username</label>
-                        <input 
-                            type="text" 
-                            placeholder="Username"
-                            name="username"
-                            value={this.state.username}
-                            onChange={this.handleChange}
-                        />
-                        {errors.username && <Message size="mini" color="red">{errors.username}</Message>}
-                    </div>
-                    <div className={classnames('form-group', { error: errors.email  })}>
-                        <label>Email</label>
-                        <input 
-                            type="text" 
-                            placeholder="Email"
-                            name="email"
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                        />
-                        {errors.email && <Message size="mini" color="red">{errors.email}</Message>}
-                    </div>
-                    <div className={classnames('form-group', { error: errors.password  })}>
-                        <label>Password</label>
-                        <input 
-                            type="password" 
-                            placeholder="Password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleChange}
-                        />
-                        {errors.password && <Message size="mini" color="red">{errors.password}</Message>}
-                    </div>
-                    <div className={classnames('form-group', { error: errors.passwordConfirm  })}>
-                        <label>Password Confirmation</label>
-                        <input 
-                            type="password"
-                            placeholder="Password Confirmation"
-                            name="passwordConfirm"
-                            value={this.state.passwordConfirm}
-                            onChange={this.handleChange}
-                        />
-                        {errors.passwordConfirm && <Message size="mini" color="red">{errors.passwordConfirm}</Message>}
-                    </div>
+                    <TextFieldGroup 
+                        label="Username"
+                        placeholder="Username"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                        error={errors.username}
+                    />
+                    <TextFieldGroup 
+                        label="Email"
+                        placeholder="Email"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                        error={errors.email}
+                    />
+                    <TextFieldGroup 
+                        label="Password"
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        error={errors.password}
+                    />
+                    <TextFieldGroup 
+                        label="Password Confirm"
+                        type="password"
+                        placeholder="Password Confirm"
+                        name="passwordConfirm"
+                        value={this.state.passwordConfirm}
+                        onChange={this.handleChange}
+                        error={errors.passwordConfirm}
+                    />
                     <div className={classnames('form-group', { error: errors.language  })}>
                         <label>Language</label>
                         <select 
