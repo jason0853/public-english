@@ -47,7 +47,8 @@ class SignupForm extends Component {
             this.setState({ errors: {}, isLoading: true });
             this.props.createUser(this.state)
             .then(res => { 
-                console.log(res);
+                this.props.history.push('/');
+                // console.log(res);
             })
             .catch((err) => this.setState({ errors: err.response.data, isLoading: false }));
         }
