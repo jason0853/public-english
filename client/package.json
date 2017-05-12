@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "classnames": "^2.2.5",
+    "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
@@ -18,6 +19,7 @@
     "redux-promise-middleware": "^4.2.0",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.2",
+    "shortid": "^2.2.8",
     "validator": "^7.0.0"
   },
   "devDependencies": {
