@@ -1,1 +1,3 @@
 export const CREATE_USER = 'CREATE_USER';
+
+export const SHOW_SIGNUP_MESSAGE = 'SHOW_SIGNUP_MESSAGE';

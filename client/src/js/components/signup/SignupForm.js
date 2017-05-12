@@ -48,7 +48,10 @@ class SignupForm extends Component {
             this.props.createUser(this.state)
             .then(res => { 
                 this.props.history.push('/');
-                // console.log(res);
+                this.props.showSignupMessage({
+                    type: 'success',
+                    text: 'You signed up successfully.'
+                })
             })
             .catch((err) => this.setState({ errors: err.response.data, isLoading: false }));
         }
@@ -116,6 +119,11 @@ class SignupForm extends Component {
             </form>
         )
     }
+}
+
+SignupForm.propTypes = {
+    createUser: PropTypes.func.isRequired,
+    showSignupMessage: PropTypes.func.isRequired
 }
 
 export default SignupForm;
