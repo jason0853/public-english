@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Divider, Message } from 'semantic-ui-react';
-
+import jwtDecode from 'jwt-decode';
 import validateInput from '../../helpers/login';
+import setAuthorizationToken from '../../helpers/setAuthorizationToken';
 import TextFieldGroup from '../common/TextFieldGroup';
 
 class LoginForm extends Component {
@@ -41,7 +42,13 @@ class LoginForm extends Component {
         if (this.isValid()) {
             this.setState({ errors: {}, isLoading: true });
             this.props.loginUser(this.state)
-            .then(res => this.props.history.push('/'))
+            .then(res => {
+                const token = res.value.data.token;
+                localStorage.setItem('jwtToken', token);
+                setAuthorizationToken(token);
+                console.log(jwtDecode(token));
+                this.props.history.push('/');
+            })
             .catch(err => this.setState({ errors: err.response.data.errors, isLoading: false }));
         }
 

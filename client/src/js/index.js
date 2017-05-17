@@ -8,6 +8,8 @@ import configureStore from './store/configureStore';
 import '../scss/index.scss';
 import 'semantic-ui-css/components/icon.css';
 
+import setAuthorizationToken from './helpers/setAuthorizationToken';
+
 const store = configureStore();
 
 const render = (Component) => {
@@ -20,6 +22,8 @@ const render = (Component) => {
         document.getElementById('app')
     );
 };
+
+setAuthorizationToken(localStorage.jwtToken);
 
 render(App);
 
