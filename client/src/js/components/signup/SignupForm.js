@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Button, Divider, Message } from 'semantic-ui-react';
-import validateInput from '../../helpers/validateInput';
+import validateInput from '../../helpers/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
 
 const languageOptions = ['korea', 'English'];

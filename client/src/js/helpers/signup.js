@@ -1,5 +1,5 @@
-const Validator = require('validator');
-const isEmpty = require('lodash/isEmpty');
+import Validator from 'validator';
+import isEmpty from 'lodash/isEmpty';
 
 export default (data) => {
     let errors = {};
