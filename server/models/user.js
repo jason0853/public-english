@@ -16,6 +16,10 @@ userSchema.statics.createUser = function(user) {
     return this.create(user);
 }
 
+userSchema.statics.findUser = function(user) {
+    return this.find({ $or: [{ 'username': user }, { 'email': user }] });
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

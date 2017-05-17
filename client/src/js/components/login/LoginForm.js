@@ -41,10 +41,8 @@ class LoginForm extends Component {
         if (this.isValid()) {
             this.setState({ errors: {}, isLoading: true });
             this.props.loginUser(this.state)
-            .then(res => {
-                this.props.history.push('/');
-            })
-            .catch(err => this.setState({ errors: err.response.data, isLoading: false }));
+            .then(res => this.props.history.push('/'))
+            .catch(err => this.setState({ errors: err.response.data.errors, isLoading: false }));
         }
 
     }
@@ -55,6 +53,7 @@ class LoginForm extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <h2>Login</h2>
+                {errors.form && <Message negative content={errors.form} size="mini" />}
                 <div className="box">
                     <TextFieldGroup 
                         label="Username / Email"
