@@ -1,10 +1,13 @@
 import Intro from '../components/intro/Intro';
 import { connect } from 'react-redux';
 
+import { setCurrentUser } from '../actions/auth';
+
 const mapStateToProps = (state) => ({
-    message: state.message
+    message: state.message,
+    auth: state.auth
 });
 
-const IntroContainer = connect(mapStateToProps)(Intro);
+const IntroContainer = connect(mapStateToProps, { setCurrentUser })(Intro);
 
 export default IntroContainer;

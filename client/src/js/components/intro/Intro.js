@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { List } from 'immutable';
+import { Map, List } from 'immutable';
 import { Message } from 'semantic-ui-react';
+import setAuthorizationToken from '../../helpers/setAuthorizationToken';
 
 import Logo from '../common/Logo';
 import Buttons from './Buttons';
@@ -19,6 +20,7 @@ class Intro extends Component {
         }
 
         this.handleDismiss = this.handleDismiss.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     handleDismiss() {
@@ -27,8 +29,17 @@ class Intro extends Component {
         });
     }
 
+    logout(e) {
+        e.preventDefault();
+        localStorage.removeItem('jwtToken');
+        setAuthorizationToken(false);
+        this.props.setCurrentUser({});
+    }
+
     render() {
-        const { message } = this.props;
+        
+        const { message } = this.props;      
+        
         const messageList = message.map(
             (msg) => (
                 <Message 
@@ -45,7 +56,10 @@ class Intro extends Component {
             <div className="intro" style={{ backgroundImage: `url(${introBg})` }}>
                 <div className="top">
                     <Logo />
-                    <Buttons />
+                    <Buttons 
+                        auth={this.props.auth} 
+                        logout={this.logout}
+                    />
                 </div>
                 {messageList}
                 <Greet />
@@ -55,7 +69,9 @@ class Intro extends Component {
 }
 
 Intro.propTypes = {
-    message: PropTypes.instanceOf(List)
+    message: PropTypes.instanceOf(List).isRequired,
+    auth: PropTypes.instanceOf(Map).isRequired,
+    setCurrentUser: PropTypes.func.isRequired
 }
 
 export default Intro;
