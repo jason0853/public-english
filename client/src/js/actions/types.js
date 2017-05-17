@@ -1,4 +1,4 @@
 export const CREATE_USER = 'CREATE_USER';
 export const LOGIN_USER = 'LOGIN_USER';
-
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const SHOW_SIGNUP_MESSAGE = 'SHOW_SIGNUP_MESSAGE';

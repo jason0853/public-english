@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
+import jwtDecode from 'jwt-decode';
+
+import { setCurrentUser } from './actions/auth';
 
 import App from './containers/App';
 import configureStore from './store/configureStore';
@@ -23,7 +26,11 @@ const render = (Component) => {
     );
 };
 
-setAuthorizationToken(localStorage.jwtToken);
+if (localStorage.jwtToken) {
+    setAuthorizationToken(localStorage.jwtToken);
+    store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
+}
+
 
 render(App);
 

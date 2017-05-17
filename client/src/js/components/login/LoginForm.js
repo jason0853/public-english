@@ -46,7 +46,7 @@ class LoginForm extends Component {
                 const token = res.value.data.token;
                 localStorage.setItem('jwtToken', token);
                 setAuthorizationToken(token);
-                console.log(jwtDecode(token));
+                this.props.setCurrentUser(jwtDecode(token));
                 this.props.history.push('/');
             })
             .catch(err => this.setState({ errors: err.response.data.errors, isLoading: false }));
@@ -88,7 +88,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-    loginUser: PropTypes.func.isRequired
+    loginUser: PropTypes.func.isRequired,
+    setCurrentUser: PropTypes.func.isRequired
 }
 
 export default LoginForm;

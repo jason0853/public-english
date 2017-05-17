@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 
 import loginBg from '../../../img/second_bg.jpg';
 
-const Login = ({ loginUser, history }) => {
+const Login = ({ loginUser, setCurrentUser, history }) => {
     return (
         <div className="login" style={{ backgroundImage: `url(${loginBg})` }}>
             <div className="top">
@@ -14,6 +14,7 @@ const Login = ({ loginUser, history }) => {
             </div>
             <LoginForm
                 loginUser={loginUser}
+                setCurrentUser={setCurrentUser}
                 history={history}
             />
         </div>
@@ -21,7 +22,8 @@ const Login = ({ loginUser, history }) => {
 };
 
 Login.propTypes = {
-    loginUser: PropTypes.func.isRequired
+    loginUser: PropTypes.func.isRequired,
+    setCurrentUser: PropTypes.func.isRequired
 }
 
 export default Login;
